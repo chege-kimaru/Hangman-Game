@@ -11,16 +11,19 @@ public class Game {
     int x;
 
     Game() {
+        UserInteraction ui = new UserInteraction();
         openFile();
-        dashes(genRand());
+        ui.display("You are guessing \n" + dashes(genRand()));
+        String guess = ui.takeGuess();
+        
     }
 
     void display() {
 
     }
 
+    //Open the txt file.
     void openFile() {
-
         try {
             moviefile = new File("C:\\Users\\Spectre\\Desktop\\Programming\\Java\\UdacityJava\\HangmanMovie\\src\\movies.txt");
             in = new Scanner(moviefile);
@@ -31,13 +34,13 @@ public class Game {
 
     }
 
+    //Have the computer randomly choose a line from the txt file
     String genRand() {
         String line = "";
         int count = 0;
         //To know the number of lines in txt file
         while (in.hasNextLine()) {
             line = in.nextLine();
-            System.out.println(count + " " + line);
             count++;
         }
         //Pick a random line from file
@@ -51,26 +54,20 @@ public class Game {
             lnum++;
         }
         line = in.nextLine();
-        //System.out.println(line);
         return line;
     }
-    
-    String dashes(String title){
+
+    String dashes(String title) {
         String dashString = "";
-        for(int i=0;i<title.length(); i++){
-            if(String.valueOf(title.charAt(i)).equals(" ")){
+        for (int i = 0; i < title.length(); i++) {
+            if (String.valueOf(title.charAt(i)).equals(" ")) {
                 dashString += " ";
-            }else{
+            } else {
                 dashString += "_ ";
-            }            
+            }
         }
-        System.out.println(dashString);
         return dashString;
     }
-    
-    
 
-    
-    
-    
+    //Compare the guess
 }

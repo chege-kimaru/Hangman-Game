@@ -22,7 +22,7 @@ public class Game {
         ui.display(dashedString);
         logic.loop(genLine, dashedString);
         
-//        System.out.println(logic.check(ui.takeGuess(), genLine, dashedString));
+
 
         
     }
@@ -51,7 +51,6 @@ public class Game {
         //Pick a random line from file
         Random rand = new Random();
         int r = rand.nextInt(count);
-//        System.out.println("Rand num is " + r);
         openFile();
         int lnum = 0;
         while (lnum != r) {

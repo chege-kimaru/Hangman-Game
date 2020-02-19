@@ -8,18 +8,23 @@ public class Game {
 
     Scanner in;
     File moviefile;
-    int x;
+    private int x;
 
-    Game() {
-        UserInteraction ui = new UserInteraction();
-        openFile();
-        ui.display("You are guessing \n" + dashes(genRand()));
-        String guess = ui.takeGuess();
+
+
+    void start(){
         
-    }
+        UserInteraction ui = new UserInteraction();
+        GameLogic logic = new GameLogic();
+        openFile();
+        String genLine = genRand();
+        String dashedString = dashes(genLine);
+        ui.display(dashedString);
+        logic.loop(genLine, dashedString);
+        
+//        System.out.println(logic.check(ui.takeGuess(), genLine, dashedString));
 
-    void display() {
-
+        
     }
 
     //Open the txt file.
@@ -46,7 +51,7 @@ public class Game {
         //Pick a random line from file
         Random rand = new Random();
         int r = rand.nextInt(count);
-        System.out.println("Rand num is " + r);
+//        System.out.println("Rand num is " + r);
         openFile();
         int lnum = 0;
         while (lnum != r) {
@@ -54,20 +59,23 @@ public class Game {
             lnum++;
         }
         line = in.nextLine();
+        System.out.println(line);
         return line;
     }
 
-    String dashes(String title) {
+    String dashes(String genLine) {
         String dashString = "";
-        for (int i = 0; i < title.length(); i++) {
-            if (String.valueOf(title.charAt(i)).equals(" ")) {
+        for (int i = 0; i < genLine.length(); i++) {
+            if (String.valueOf(genLine.charAt(i)).equals(" ")) {
                 dashString += " ";
             } else {
-                dashString += "_ ";
+                dashString += "*";
             }
         }
+        
         return dashString;
     }
 
-    //Compare the guess
+    
+    
 }

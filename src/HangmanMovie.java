@@ -10,6 +10,10 @@ public class HangmanMovie {
         int input = 0;
         if (ui.start() == 0) {
             Game newgame = new Game();
+            newgame.start();
+        } else {
+            System.out.println("Game stopped");
+
         }
 
     }

@@ -30,7 +30,7 @@ public class Game {
     //Open the txt file.
     void openFile() {
         try {
-            moviefile = new File("C:\\Users\\Spectre\\Desktop\\Programming\\Java\\UdacityJava\\HangmanMovie\\src\\movies.txt");
+            moviefile = new File("movies.txt");
             in = new Scanner(moviefile);
 
         } catch (FileNotFoundException ex) {
